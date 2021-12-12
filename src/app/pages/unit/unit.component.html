@@ -1,0 +1,41 @@
+<div class="page-content" fxLayout='column' fxLayoutAlign='start stretch'>
+    <!-- Title -->
+    <p class="page-title">Unit Converter</p>
+    <span class="line"></span>
+    <!-- Result -->
+    <ng-container *ngIf="this.showResult">
+        <p class="from-title">{{this.fromValue}} {{this.fromDisplayName}} =</p>
+        <p class="to-title">{{this.toValue}} {{this.toDisplayName}}</p>
+    </ng-container>
+    <!-- Body -->
+    <div class="convertor-body" fxLayout='column' fxLayoutAlign='start start'>
+        <div class="filter" fxLayout='row' fxLayoutAlign='start center' fxLayoutGap="30px" fxLayoutGap.xs="0"
+            fxLayoutAlign.xs='space-between center'>
+            <mat-form-field appearance="outline" fxFlex="30" fxFlex.xs="48">
+                <mat-label>Enter a number</mat-label>
+                <input matInput placeholder="Enter an amount" type="tel" (keypress)="this.checkFormat($event)" fxFlex="100" [(ngModel)]="fromValue"
+                    (ngModelChange)="change('from')" />
+            </mat-form-field>
+            <mat-form-field appearance="outline" fxFlex="30" fxFlex.xs="48">
+                <mat-label>Base Unit</mat-label>
+                <mat-select fxFlex="100" [(ngModel)]="fromUnit" (ngModelChange)="change('from')">
+                    <mat-option *ngFor="let unit of units" [value]="unit.name">{{unit.name}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="filter" fxLayout='row' fxLayoutAlign='start center' fxLayoutGap="30px" fxLayoutGap.xs="0"
+            fxLayoutAlign.xs='space-between center'>
+            <mat-form-field appearance="outline" fxFlex="30" fxFlex.xs="48">
+                <mat-label>Enter a number</mat-label>
+                <input matInput placeholder="Enter an amount" type="tel" (keypress)="this.checkFormat($event)" fxFlex="100" [(ngModel)]="toValue"
+                    (ngModelChange)="change('to')" />
+            </mat-form-field>
+            <mat-form-field appearance="outline" fxFlex="30" fxFlex.xs="48">
+                <mat-label>Target Unit</mat-label>
+                <mat-select panelClass="select" fxFlex="100" [(ngModel)]="toUnit" (ngModelChange)="change('to')">
+                    <mat-option *ngFor="let unit of units" [value]="unit.name">{{unit.name}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+    </div>
+</div>

@@ -1,1 +1,50 @@
 /* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+    height: 100%;
+}
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+* {
+    letter-spacing: .2px;
+}
+.page-content {
+    padding: 30px 16px 16px;
+}
+
+.page-title {
+    font-size: 16px;
+    font-weight: 500;
+    color: #374151;
+    margin-bottom: 5px;
+}
+.line {
+    width: 30px;
+    height: 2px;
+    content: '';
+    background: #4845ed;
+    margin-bottom: 20px;
+}
+.from-title {
+    font-size: 16px;
+    font-weight: 500;
+    color: #6B7280;
+    margin: 0 !important;
+}
+.to-title {
+    font-size: 28px;
+    font-weight: 600;
+    color: #374151;
+    line-height: 2;
+}
+.convertor-body {
+    width: 100%;
+    margin-top: 30px;
+}
+.filter {
+    width: 100%;
+    margin-bottom: 10px;
+}

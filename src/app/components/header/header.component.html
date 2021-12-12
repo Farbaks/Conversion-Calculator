@@ -1,0 +1,11 @@
+<header fxLayout='row' fxLayoutAlign="start center">
+    <div class="hamburger" [ngClass]="showSideBar ? 'opened':''" fxLayout='column' fxLayoutAlign='center' (click)="toggleSideBar()">
+        <div class="h1"></div>
+        <div class="h2"></div>
+    </div>
+    <p class="title">Conversion Calculator</p>
+</header>
+<div class="sidebar" [ngClass]="showSideBar ? 'opened':''" fxLayout='column' fxLayoutAlign="start stretch">
+    <p (click)="gotToURL('/currency-converter')">Currency Converter</p>
+    <p (click)="gotToURL('/unit-converter')">Length Unit Converter</p>
+</div>

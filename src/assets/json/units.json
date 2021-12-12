@@ -1,0 +1,50 @@
+[
+    {
+        "name": "Millimeter",
+        "plural": "Millimeters",
+        "nickname": "mm",
+        "weight": 1000
+    },
+    {
+        "name": "Centimeter",
+        "plural": "Centimeters",
+        "nickname": "cm",
+        "weight": 100
+    },
+    {
+        "name": "Meter",
+        "plural": "Meters",
+        "nickname": "m",
+        "weight": 1
+    },
+    {
+        "name": "Kilometer",
+        "plural": "Kilometers",
+        "nickname": "km",
+        "weight": 0.001
+    },
+    {
+        "name": "Mile",
+        "plural": "Miles",
+        "nickname": "mile",
+        "weight": 0.000621371
+    },
+    {
+        "name": "Inch",
+        "plural": "Inches",
+        "nickname": "in",
+        "weight": 39.3701
+    },
+    {
+        "name": "Yard",
+        "plural": "Yards",
+        "nickname": "yd",
+        "weight": 1.09361
+    },
+    {
+        "name": "Foot",
+        "plural": "Feet",
+        "nickname": "ft",
+        "weight": 3.28084
+    }
+]
