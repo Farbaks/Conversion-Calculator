@@ -9,7 +9,7 @@ body {
     font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 * {
-    letter-spacing: .2px;
+    letter-spacing: 0.2px;
 }
 .page-content {
     padding: 30px 16px 16px;
@@ -24,27 +24,43 @@ body {
 .line {
     width: 30px;
     height: 2px;
-    content: '';
+    content: "";
     background: #4845ed;
     margin-bottom: 20px;
 }
 .from-title {
     font-size: 16px;
     font-weight: 500;
-    color: #6B7280;
+    color: #6b7280;
     margin: 0 !important;
+    word-break: break-all;
 }
 .to-title {
     font-size: 28px;
     font-weight: 600;
     color: #374151;
     line-height: 2;
+    word-break: break-all;
 }
-.convertor-body {
+.converter-body {
     width: 100%;
     margin-top: 30px;
 }
 .filter {
     width: 100%;
     margin-bottom: 10px;
+}
+.legend {
+    font-size: 14px;
+    font-weight: 500;
+    color: #6b7280;
+    span {
+        background: #ebf5ff;
+        border-radius: 10px;
+        color: #4845ed;
+        font-weight: 800;
+        font-size: 11px;
+        margin-left: 5px;
+        padding: 3px 15px;
+    }
 }

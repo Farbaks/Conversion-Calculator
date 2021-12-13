@@ -26,7 +26,7 @@ export class UnitComponent implements OnInit {
     return (/^\d+$/.test(event.key));
   }
 
-  change(type: "from" | "to") {
+  changeAmount(type: "from" | "to") {
     this.showResult = false;
     if(![this.fromUnit, this.toUnit].includes("")) {
       if (type == "from") {
@@ -52,7 +52,33 @@ export class UnitComponent implements OnInit {
         }
       }
     }
-    
+  }
+
+  changeUnit(type: "from" | "to") {
+    if(![this.fromUnit, this.toUnit].includes("")) {
+      if (type == "from") {
+        if (this.fromValue) {
+          this.changeAmount('from');
+        }
+        else if(this.toValue) {
+          this.changeAmount('to');
+        }
+        else {
+          this.toValue = null
+        }
+      }
+      else {
+        if (this.toValue) {
+          this.changeAmount('to');
+        }
+        else if(this.fromValue) {
+          this.changeAmount('from');
+        }
+        else {
+          this.fromValue = null
+        }
+      }
+    }
   }
 
   convert(value: number, fromUnit: string, toUnit: string): number {
@@ -64,5 +90,4 @@ export class UnitComponent implements OnInit {
     })!;
     return value * to.weight / from.weight;
   }
-
 }

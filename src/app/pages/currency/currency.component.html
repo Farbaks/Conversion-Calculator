@@ -2,29 +2,33 @@
     <!-- Title -->
     <p class="page-title">Currency Converter</p>
     <span class="line"></span>
-    <!-- Result -->
+    <!-- Conversion Result -->
     <ng-container *ngIf="![this.baseCurrency, this.targetCurrency].includes('')">
-        <div class="loader" [ngStyle.xs]="{'width': '100%'}" [ngStyle]="{'width': '60%'}" fxLayout='row' fxLayoutAlign='center center' *ngIf="fetchingConversionRate">
+        <div class="loader" [ngStyle.xs]="{'width': '100%'}" [ngStyle]="{'width': '60%'}" fxLayout='row'
+            fxLayoutAlign='center center' *ngIf="fetchingConversionRate">
             <mat-spinner diameter=40></mat-spinner>
         </div>
         <ng-container *ngIf="!fetchingConversionRate">
-            <p class="from-title"> {{this.baseAmount | currency:this.baseCurrency.code:'symbol-narrow'}} =</p>
-            <p class="to-title">{{this.targetAmount | currency:this.targetCurrency.code:'symbol-narrow'}}</p>
-            <div fxLayout='row' [ngStyle.xs]="{'width': '100%'}" [ngStyle]="{'width': '60%'}">
+            <ng-container *ngIf="this.baseAmount && this.targetAmount">
+                <p class="from-title"> {{this.baseAmount | currency:this.baseCurrency.code:'symbol-narrow'}} =</p>
+                <p class="to-title">{{this.targetAmount | currency:this.targetCurrency.code:'symbol-narrow'}}</p>
+            </ng-container>
+            <div fxLayout='column' [ngStyle.xs]="{'width': '100%'}" [ngStyle]="{'width': '40%'}">
+                <p class="legend">Historical View - <span>1 month</span></p>
                 <canvas id="myChart" #chart width="300" height="160"></canvas>
             </div>
         </ng-container>
     </ng-container>
-    
+
     <!-- Body -->
-    <div class="convertor-body" fxLayout='column' fxLayoutAlign='start start'
+    <div class="converter-body" fxLayout='column' fxLayoutAlign='start start'
         *ngIf="!this.fetchingData && this.currencies.length > 0">
         <div class="filter" fxLayout='row' fxLayoutAlign='start center' fxLayoutGap="30px" fxLayoutGap.xs="0"
             fxLayoutAlign.xs='space-between center'>
             <mat-form-field appearance="outline" fxFlex="30" fxFlex.xs="48">
                 <mat-label>Enter an amount</mat-label>
-                <input matInput placeholder="Enter an amount" type="tel" (keypress)="this.checkFormat($event)" fxFlex="100" [(ngModel)]="baseAmount"
-                    (ngModelChange)="changeAmount('from')" />
+                <input matInput placeholder="Enter an amount" type="tel" (keypress)="this.checkFormat($event)"
+                    fxFlex="100" [(ngModel)]="baseAmount" (ngModelChange)="changeAmount('from')" />
             </mat-form-field>
             <mat-form-field appearance="outline" fxFlex="30" fxFlex.xs="48">
                 <mat-label>Base Currency</mat-label>
@@ -38,8 +42,8 @@
             fxLayoutAlign.xs='space-between center'>
             <mat-form-field appearance="outline" fxFlex="30" fxFlex.xs="48">
                 <mat-label>Enter an amount</mat-label>
-                <input matInput placeholder="Enter an amount" type="tel" (keypress)="this.checkFormat($event)" fxFlex="100" [(ngModel)]="targetAmount"
-                    (ngModelChange)="changeAmount('to')" />
+                <input matInput placeholder="Enter an amount" type="tel" (keypress)="this.checkFormat($event)"
+                    fxFlex="100" [(ngModel)]="targetAmount" (ngModelChange)="changeAmount('to')" />
             </mat-form-field>
             <mat-form-field appearance="outline" fxFlex="30" fxFlex.xs="48">
                 <mat-label>Target Currency</mat-label>

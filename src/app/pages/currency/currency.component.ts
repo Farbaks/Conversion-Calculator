@@ -19,7 +19,7 @@ export class CurrencyComponent implements OnInit {
   conversionRate: number = 1;
   @ViewChild('chart') chart!: any;
   constructor(
-    private currencyService: CurrencyService
+    public currencyService: CurrencyService
   ) { }
 
 
@@ -54,6 +54,14 @@ export class CurrencyComponent implements OnInit {
 
           this.fetchingData = false;
         }
+        else {
+          this.currencies = [];
+          this.fetchingData = false;
+        }
+      }, 
+      (error:any) => {
+        this.currencies = [];
+          this.fetchingData = false;
       }
     )
   }
@@ -65,8 +73,7 @@ export class CurrencyComponent implements OnInit {
           this.targetAmount = this.baseAmount * this.conversionRate;
         }
         else {
-          this.baseAmount = 1;
-          this.targetAmount = this.baseAmount * this.conversionRate;
+          this.targetAmount = null;
         }
       }
       else {
@@ -74,8 +81,7 @@ export class CurrencyComponent implements OnInit {
           this.baseAmount = this.targetAmount / this.conversionRate
         }
         else {
-          this.targetAmount = this.conversionRate;
-          this.baseAmount = this.targetAmount / this.conversionRate
+          this.baseAmount = null
         }
       }
     }
@@ -85,19 +91,26 @@ export class CurrencyComponent implements OnInit {
   async getConversionRate(type: "from" | "to") {
     this.fetchingConversionRate = true;
     if (![this.baseCurrency, this.targetCurrency].includes("")) {
-
       try {
         // Get Latest conversion rate
         let res: any = await this.currencyService.convert(1, this.baseCurrency.code, this.targetCurrency.code).toPromise();
         if (res.success) {
           this.conversionRate = res.info.rate;
+
+          if (type == "from") {
+            this.baseAmount = this.baseAmount ? this.baseAmount : 1;
+          }
+          else {
+            this.targetAmount = this.targetAmount ? this.targetAmount : this.conversionRate;
+          }
           this.changeAmount(type);
         }
+        
 
         // Get trend chart
         let current: Date = new Date();
         let toDate: string = current.toISOString().split('T')[0];
-        
+
         // Get trend for 1 month
         current.setMonth(current.getMonth() - 1);
         let fromDate: string = current.toISOString().split('T')[0];
@@ -116,7 +129,9 @@ export class CurrencyComponent implements OnInit {
           }
         )
       }
-      catch (e) {}
+      catch (e) {
+        this.conversionRate = 0;
+      }
     }
   }
 

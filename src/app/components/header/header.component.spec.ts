@@ -1,30 +1,55 @@
 import { CommonModule } from '@angular/common';
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule, Routes } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
+import { Location } from '@angular/common';
 
 import { HeaderComponent } from './header.component';
 
 describe('HeaderComponent', () => {
   let component: HeaderComponent;
   let fixture: ComponentFixture<HeaderComponent>;
+  let location: Location;
+  let router: Router;
+
+  const routes: Routes = [
+    {
+      path: 'currency-converter',
+      loadChildren: () => import('../../pages/currency/currency.module').then(m => m.CurrencyModule)
+    },
+    {
+      path: 'unit-converter',
+      loadChildren: () => import('../../pages/unit/unit.module').then(m => m.UnitModule)
+    },
+    {
+      path: '',
+      pathMatch: 'full',
+      redirectTo: 'currency-converter'
+    }
+  ];
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ HeaderComponent ],
+      declarations: [HeaderComponent],
       imports: [
         CommonModule,
         RouterModule,
-        RouterTestingModule,
+        RouterTestingModule.withRoutes(routes),
         FlexLayoutModule
       ],
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {
     fixture = TestBed.createComponent(HeaderComponent);
+
+    router = TestBed.inject(Router);
+    location = TestBed.inject(Location);
+
+    router.initialNavigation();
+
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

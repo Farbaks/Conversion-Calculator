@@ -46,54 +46,54 @@ describe('UnitComponent', () => {
     component.toUnit = component.units[1].name;
     component.fromValue = 2;
     component.toValue = null;
-    component.change('from');
+    component.changeUnit('from');
     expect(component.toValue).toEqual(jasmine.any(Number));
     expect(component.showResult).toBe(true);
   });
 
-  it('should convert \'to - from\' when all fields are filled', () => {
+  it('should convert \'to - from\' when all fields are filled (when unit is changed)', () => {
     component.fromUnit = component.units[0].name;
     component.toUnit = component.units[1].name;
     component.toValue = 2;
     component.fromValue = null;
-    component.change('to');
+    component.changeUnit('to');
     expect(component.fromValue).toEqual(jasmine.any(Number));
     expect(component.showResult).toBe(true);
   });
 
-  it('should not convert when from unit is missing', () => {
+  it('should not convert when `from` unit is missing (when unit is changed)', () => {
     component.fromUnit = "";
     component.toUnit = component.units[1].name;
     component.toValue = 2;
     component.fromValue = null;
-    component.change('to');
+    component.changeUnit('to');
     expect(component.showResult).toBe(false);
   });
 
-  it('should not convert when to unit is missing', () => {
+  it('should not convert when `to` unit is missing (when unit is changed)', () => {
     component.toUnit = "";
     component.fromUnit = component.units[1].name;
     component.toValue = 2;
     component.fromValue = null;
-    component.change('to');
+    component.changeUnit('to');
     expect(component.showResult).toBe(false);
   });
 
-  it('should not convert \'from - to\' when from value is missing', () => {
+  it('should not convert \'from - to\' when `from` value is missing (when value is changed)', () => {
     component.toUnit = component.units[0].name;
     component.fromUnit = component.units[1].name;
     component.toValue = 2;
     component.fromValue = null;
-    component.change('from');
+    component.changeAmount('from');
     expect(component.showResult).toBe(false);
   });
 
-  it('should not convert \'to - from\' when to value is missing', () => {
+  it('should not convert \'to - from\' when `to` value is missing (when value is changed)', () => {
     component.toUnit = component.units[0].name;
     component.fromUnit = component.units[1].name;
     component.fromValue = 2;
     component.toValue = null;
-    component.change('to');
+    component.changeAmount('to');
     expect(component.showResult).toBe(false);
   });
 
