@@ -12,9 +12,9 @@ export class CurrencyComponent implements OnInit {
   fetchingData: boolean = true;
   fetchingConversionRate: boolean = true;
   currencies: Array<any> = [];
-  baseAmount!: number | null;
+  baseAmount: number | null = null;
   baseCurrency: any = "";
-  targetAmount!: number | null;
+  targetAmount: number | null = null;
   targetCurrency: any = "";
   conversionRate: number = 1;
   @ViewChild('chart') chart!: any;
@@ -155,7 +155,6 @@ export class CurrencyComponent implements OnInit {
       options: {
         scales: {
           x: {
-
             grid: {
               display: false,
               borderColor: '#E5E9F1'
@@ -167,18 +166,12 @@ export class CurrencyComponent implements OnInit {
               font: {
                 size: 10
               },
-            },
-            title: {
-              text: 'Total orders'
-            },
+            }
           },
           y: {
             grid: {
               drawBorder: false,
               color: '#E5E9F1',
-            },
-            title: {
-              text: 'Total orders'
             },
             ticks: {
               color: '#9AA3B6',

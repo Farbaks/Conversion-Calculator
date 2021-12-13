@@ -9,10 +9,10 @@ import * as Units from 'src/assets/json/units.json';
 })
 export class UnitComponent implements OnInit {
   units: Array<UnitType> = (Units as any).default;
-  fromValue!: number | null;
+  fromValue: number | null = null;
   fromUnit: string = "";
   fromDisplayName: string = "";
-  toValue!: number | null;
+  toValue: number | null = null;
   toUnit: string = "";
   toDisplayName: string = "";
   showResult: boolean = false;
