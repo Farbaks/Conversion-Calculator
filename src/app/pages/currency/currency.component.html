@@ -1,4 +1,4 @@
-<div class="page-content" fxLayout='column' fxLayoutAlign='start stretch'>
+<div class="page-content" fxLayout='column' fxLayoutAlign='start center' fxLayoutAlign.xs='start stretch'>
     <!-- Title -->
     <p class="page-title">Currency Converter</p>
     <span class="line"></span>
@@ -21,9 +21,9 @@
     </ng-container>
 
     <!-- Body -->
-    <div class="converter-body" fxLayout='column' fxLayoutAlign='start start'
+    <div class="converter-body" fxLayout='column' fxLayoutAlign='start center'
         *ngIf="!this.fetchingData && this.currencies.length > 0">
-        <div class="filter" fxLayout='row' fxLayoutAlign='start center' fxLayoutGap="30px" fxLayoutGap.xs="0"
+        <div class="filter" fxLayout='row' fxLayoutAlign.xs='start center' fxLayoutAlign='center center' fxLayoutGap="30px" fxLayoutGap.xs="0"
             fxLayoutAlign.xs='space-between center'>
             <mat-form-field appearance="outline" fxFlex="30" fxFlex.xs="48">
                 <mat-label>Enter an amount</mat-label>
@@ -38,7 +38,7 @@
                 </mat-select>
             </mat-form-field>
         </div>
-        <div class="filter" fxLayout='row' fxLayoutAlign='start center' fxLayoutGap="30px" fxLayoutGap.xs="0"
+        <div class="filter" fxLayout='row'fxLayoutAlign.xs='start center' fxLayoutAlign='center center' fxLayoutGap="30px" fxLayoutGap.xs="0"
             fxLayoutAlign.xs='space-between center'>
             <mat-form-field appearance="outline" fxFlex="30" fxFlex.xs="48">
                 <mat-label>Enter an amount</mat-label>
