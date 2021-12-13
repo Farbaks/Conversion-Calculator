@@ -23,7 +23,7 @@ export class UnitComponent implements OnInit {
   }
 
   checkFormat(event: any) {
-    return (/^\d+$/.test(event.key));
+    return (/[\d.]/.test(event.key));
   }
 
   changeAmount(type: "from" | "to") {

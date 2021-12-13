@@ -10,8 +10,8 @@
         </div>
         <ng-container *ngIf="!fetchingConversionRate">
             <ng-container *ngIf="this.baseAmount && this.targetAmount">
-                <p class="from-title"> {{this.baseAmount | currency:this.baseCurrency.code:'symbol-narrow'}} =</p>
-                <p class="to-title">{{this.targetAmount | currency:this.targetCurrency.code:'symbol-narrow'}}</p>
+                <p class="from-title"> {{this.baseAmount | currency:this.baseCurrency.code:'symbol-narrow':'1.2'}} =</p>
+                <p class="to-title">{{this.targetAmount | currency:this.targetCurrency.code:'symbol-narrow':'1.2'}}</p>
             </ng-container>
             <div fxLayout='column' [ngStyle.xs]="{'width': '100%'}" [ngStyle]="{'width': '40%'}">
                 <p class="legend">Historical View - <span>1 month</span></p>

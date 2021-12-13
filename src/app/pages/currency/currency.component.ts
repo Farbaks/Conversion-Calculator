@@ -28,7 +28,7 @@ export class CurrencyComponent implements OnInit {
   }
 
   checkFormat(event: any) {
-    return (/^\d+$/.test(event.key));
+    return (/[\d.]/.test(event.key));
   }
 
   getCurrencies() {
